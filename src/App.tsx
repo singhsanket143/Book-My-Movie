@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 
 function App() {
 
@@ -6,7 +6,7 @@ function App() {
     <div>
       BMM
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
