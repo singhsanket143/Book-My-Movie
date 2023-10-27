@@ -1,11 +1,11 @@
 import './App.css';
 
+import MainRoutes from './Routing/MainRoutes';
+
 function App() {
 
   return (
-    <div>
-      BMM
-    </div>
+    <MainRoutes />
   );
 }
 
