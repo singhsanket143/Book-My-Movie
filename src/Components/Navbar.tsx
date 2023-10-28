@@ -4,7 +4,8 @@ import Logo from '../Assets/logo.png';
 function Navbar() {
 
     return (
-        <div className="navbar bg-[#333545]">
+        <div className="bg-[#333545]">
+            <div className="navbar bg-[#333545] w-[80vw] mx-auto">
             <div className="flex-1">
                 <div className='h-12 mr-8'>
                     <img className="h-[100%] w-36" src={Logo} />
@@ -33,7 +34,9 @@ function Navbar() {
                 </ul>
                 </div>
             </div>
+            </div>
         </div>
+        
     );
 }
 
