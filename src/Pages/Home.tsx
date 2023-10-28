@@ -16,14 +16,12 @@ function Home() {
                 <div className='text-2xl font-semibold text-black mt-4'>
                     Recommended Movies
                 </div>
-                <div className="mt-8 flex justify-center items-center gap-4">
+                <div className="mt-8 flex flex-col lg:flex-row justify-center items-center gap-4">
                     <HomeMovieCard movieImage={MoviePoster} />
                     <HomeMovieCard movieImage={MoviePoster} />
                     <HomeMovieCard movieImage={MoviePoster} />
                     <HomeMovieCard movieImage={MoviePoster} />
                     <HomeMovieCard movieImage={MoviePoster} />
-
-
                 </div>
 
                 <HomeBanner image={IccBannerImage} />

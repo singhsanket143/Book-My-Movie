@@ -6,7 +6,7 @@ type HomeMovieCardProps = {
 
 function HomeMovieCard({ movieImage } : HomeMovieCardProps) {
     return (
-        <div className="flex flex-col items-center justify-center h-[416px] w-[222px]">
+        <div className="flex flex-col items-center justify-center h-[450px] w-[265px] lg:h-[416px] lg:w-[222px]">
             <img 
                 src={movieImage} 
                 className="h-[95%] w-full rounded-tl-lg rounded-tr-lg"
