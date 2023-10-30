@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import IccBannerImage from '../Assets/iccbanner.avif';
 import MoviePoster from '../Assets/movieposter.png';
 import HomeBanner from '../Components/HomeBanner';
@@ -5,8 +7,38 @@ import HomeCarousel from "../Components/HomeCarousel";
 import HomeFooter from '../Components/HomeFooter';
 import HomeMovieCard from "../Components/HomeMovieCard";
 import Navbar from "../Components/Navbar";
+import axiosInstance from '../Config/AxiosInstance';
+import Movie from '../Types/Movie';
+
+type MoviePoster = [{
+    id: string,
+    poster: string
+}];
 
 function Home() {
+
+    const [moviePosters, setMoviePosters] = useState<MoviePoster>([{id: "", poster: ""}]);
+
+    async function fetchMovies() {
+        try {
+            const response = await axiosInstance.get("/mba/api/v1/movies");
+            const movieData = response.data.data.map((movie: Movie) => {
+                return {
+                    id: movie._id,
+                    poster: movie.poster
+                };
+            });
+            console.log(movieData);
+            setMoviePosters(movieData);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchMovies();
+    }, []);
+
     return (
         <>
             <Navbar />
@@ -17,11 +49,12 @@ function Home() {
                     Recommended Movies
                 </div>
                 <div className="mt-8 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <HomeMovieCard movieImage={MoviePoster} />
-                    <HomeMovieCard movieImage={MoviePoster} />
-                    <HomeMovieCard movieImage={MoviePoster} />
-                    <HomeMovieCard movieImage={MoviePoster} />
-                    <HomeMovieCard movieImage={MoviePoster} />
+                    {
+                        moviePosters && moviePosters.map((moviePoster) => {
+                            return <HomeMovieCard key={moviePoster.id} movieImage={moviePoster.poster} />;
+                        })
+                    }
+                   
                 </div>
 
                 <HomeBanner image={IccBannerImage} />
