@@ -4,7 +4,6 @@ import IccBannerImage from '../Assets/iccbanner.avif';
 import MoviePoster from '../Assets/movieposter.png';
 import HomeBanner from '../Components/HomeBanner';
 import HomeCarousel from "../Components/HomeCarousel";
-import HomeFooter from '../Components/HomeFooter';
 import HomeMovieCard from "../Components/HomeMovieCard";
 import axiosInstance from '../Config/AxiosInstance';
 import HomeLayout from '../Layouts/HomeLayout';
@@ -60,7 +59,7 @@ function Home() {
                 <HomeBanner image={IccBannerImage} />
             </div>
 
-            <HomeFooter />
+            
             
         </HomeLayout>
     );
