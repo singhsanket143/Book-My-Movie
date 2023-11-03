@@ -1,6 +1,6 @@
 function ShowTimingCard() {
     return (
-        <div className="group relative w-32 py-1 px-2 flex flex-col items-center justify-center text-sm text-green-400 rounded-lg border border-black">
+        <div className="mx-2 my-2 group relative w-32 py-1 px-2 flex flex-col items-center justify-center text-sm text-green-400 rounded-lg border border-black">
             <div>
                 10:45 PM
             </div>
