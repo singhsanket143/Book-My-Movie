@@ -9,7 +9,7 @@ function ShowTimingCard() {
                 Dolby Atmos
             </div>
 
-            <div className="absolute top-[100%] left-[10%] text-black hidden group-hover:block shadow-lg py-2 px-4">
+            <div className="z-10 bg-white absolute top-[100%] left-[10%] text-black hidden group-hover:block shadow-lg py-2 px-4">
                 <div className="flex flex-col items-center justify-center">
                     <div>
                         Rs. 200
