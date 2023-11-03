@@ -1,10 +1,10 @@
-import ShowTimingCard from "../Components/ShowTimingCard";
+import TheatreNameCard from "../Components/TheatreNameCard";
 
 function MovieListings() {
     return (
         <>  
             <div>show timing</div>
-            <ShowTimingCard />
+            <TheatreNameCard />
         </>
     );
 }
