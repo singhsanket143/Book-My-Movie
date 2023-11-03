@@ -13,7 +13,7 @@ function TheatreNameCard() {
                     <PiDeviceMobileBold className="inline text-2xl " /> M-Ticket
                 </div>
 
-                <div className="text-amber-500 font-light">
+                <div className="text-orange-300 font-light">
                     <MdFastfood className="inline text-2xl"/> Food & Beverages
                 </div>
 

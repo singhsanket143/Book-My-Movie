@@ -6,8 +6,8 @@ import HomeBanner from '../Components/HomeBanner';
 import HomeCarousel from "../Components/HomeCarousel";
 import HomeFooter from '../Components/HomeFooter';
 import HomeMovieCard from "../Components/HomeMovieCard";
-import Navbar from "../Components/Navbar";
 import axiosInstance from '../Config/AxiosInstance';
+import HomeLayout from '../Layouts/HomeLayout';
 import Movie from '../Types/Movie';
 
 type MoviePoster = [{
@@ -40,8 +40,8 @@ function Home() {
     }, []);
 
     return (
-        <>
-            <Navbar />
+        <HomeLayout>
+            
             <HomeCarousel />
             <div className="min-h-[66rem] w-[80vw] mx-auto flex flex-col">
                 <HomeBanner image={IccBannerImage} />
@@ -62,7 +62,7 @@ function Home() {
 
             <HomeFooter />
             
-        </>
+        </HomeLayout>
     );
 }
 

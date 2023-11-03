@@ -1,11 +1,11 @@
-import TheatreNameCard from "../Components/TheatreNameCard";
+import ShowTimingCard from "../Components/ShowTimingCard";
+import HomeLayout from "../Layouts/HomeLayout";
 
 function MovieListings() {
     return (
-        <>  
-            <div>show timing</div>
-            <TheatreNameCard />
-        </>
+        <HomeLayout>
+            <ShowTimingCard />
+        </HomeLayout>
     );
 }
 
