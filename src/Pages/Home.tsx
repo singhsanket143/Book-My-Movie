@@ -11,12 +11,13 @@ import Movie from '../Types/Movie';
 
 type MoviePoster = [{
     id: string,
-    poster: string
+    poster: string,
+    name: string
 }];
 
 function Home() {
 
-    const [moviePosters, setMoviePosters] = useState<MoviePoster>([{id: "", poster: ""}]);
+    const [moviePosters, setMoviePosters] = useState<MoviePoster>([{id: "", poster: "", name: ""}]);
 
     async function fetchMovies() {
         try {
@@ -24,7 +25,8 @@ function Home() {
             const movieData = response.data.data.map((movie: Movie) => {
                 return {
                     id: movie._id,
-                    poster: movie.poster
+                    poster: movie.poster,
+                    name: movie.name
                 };
             });
             console.log(movieData);
@@ -50,7 +52,7 @@ function Home() {
                 <div className="mt-8 flex flex-col lg:flex-row justify-center items-center gap-4">
                     {
                         moviePosters && moviePosters.map((moviePoster) => {
-                            return <HomeMovieCard key={moviePoster.id} movieImage={moviePoster.poster} />;
+                            return <HomeMovieCard key={moviePoster.id} movieImage={moviePoster.poster} movieId={moviePoster.id} movieName={moviePoster.name} />;
                         })
                     }
                    

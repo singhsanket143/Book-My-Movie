@@ -1,10 +1,10 @@
 import { MdFastfood } from "react-icons/md";
 import { PiDeviceMobileBold } from "react-icons/pi";
-function TheatreNameCard() {
+function TheatreNameCard({name} : {name: string}) {
     return (
         <div className="flex flex-col items-start justify-center font-semibold px-4 py-2">
             <div>
-                Cinepolis: Seasons Mall, Pune
+                {name}
             </div>
 
             <div className="flex gap-8 items-center justify-around mt-3">

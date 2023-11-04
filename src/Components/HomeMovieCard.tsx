@@ -1,12 +1,22 @@
 import { AiFillStar } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 type HomeMovieCardProps = {
-    movieImage: string
+    movieImage: string,
+    movieId: string,
+    movieName: string
 }
 
-function HomeMovieCard({ movieImage } : HomeMovieCardProps) {
+function HomeMovieCard({ movieImage, movieId, movieName } : HomeMovieCardProps) {
+
+    const navigate = useNavigate();
+
+    function navigateToMovieListing() {
+        navigate("/movie/listing", {state: {movieId, movieName}});
+    }
+
     return (
-        <div className="flex flex-col items-center justify-center h-[450px] w-[265px] lg:h-[416px] lg:w-[222px]">
+        <div onClick={navigateToMovieListing} className="flex flex-col items-center justify-center h-[450px] w-[265px] lg:h-[416px] lg:w-[222px]">
             <img 
                 src={movieImage} 
                 className="h-[95%] w-full rounded-tl-lg rounded-tr-lg"
