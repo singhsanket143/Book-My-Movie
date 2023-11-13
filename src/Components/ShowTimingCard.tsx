@@ -1,4 +1,15 @@
-function ShowTimingCard({timing, format, price} : {timing: string, format: string, price: string}) {
+function processSeatConfig(config) {
+    if(config) {
+        return JSON.parse(config.replaceAll("'", '"'));
+    }
+    return undefined;
+}
+
+function ShowTimingCard({timing, format, price, config} : {timing: string, format: string, price: string, config: string}) {
+
+    const seatConfiguration = processSeatConfig(config);
+    console.log(seatConfiguration);
+
     return (
         <div className="mx-2 my-2 group relative w-32 py-1 px-2 flex flex-col items-center justify-center text-sm text-green-400 rounded-lg border border-black">
             <div>
