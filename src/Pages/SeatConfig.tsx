@@ -55,9 +55,9 @@ function SeatConfig() {
                 'x-access-token': import.meta.env.VITE_ACCESS_TOKEN
             }
         });
-
+        const showId = state.showId;
         if(response.data.success) {
-            navigate("/bookings");
+            navigate("/bookings", {state: {booking: response.data, showId}});
         }
     }
 
