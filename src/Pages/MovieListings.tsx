@@ -10,6 +10,8 @@ type MovieShows = {
     timing: string,
     format: string,
     price: number,
+    theatreId: string, 
+    movieId: string,
     noOfSeats: number,
     seatConfiguration: string 
 }
@@ -72,6 +74,8 @@ function MovieListings() {
                         format: show.format,
                         price: show.price,
                         noOfSeats: show.noOfSeats,
+                        movieId: show.movieId,
+                        theatreId: show.theatreId._id,
                         seatConfiguration: show.seatConfiguration ? show.seatConfiguration : ""
                     });
                 } else {
@@ -83,6 +87,8 @@ function MovieListings() {
                             timing: show.timing,
                             format: show.format,
                             price: show.price,
+                            movieId: show.movieId,
+                            theatreId: show.theatreId._id,
                             noOfSeats: show.noOfSeats,
                             seatConfiguration: show.seatConfiguration ? show.seatConfiguration : ""
                         }]

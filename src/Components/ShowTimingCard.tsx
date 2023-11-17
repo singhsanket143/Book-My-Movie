@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-function ShowTimingCard({timing, format, price, config} : {timing: string, format: string, price: string, config: string}) {
+function ShowTimingCard({timing, format, price, config, movieId, theatreId, showId} : {showId: string, timing: string, format: string, price: string, config: string, movieId: string, theatreId: string}) {
 
     const navigate = useNavigate();
 
     function onShowSelection() {
+        console.log(movieId, theatreId, price);
         if(config)
-            navigate('/movie/seatSelection', {state: {config}});
+            navigate('/movie/seatSelection', {state: {config, timing, movieId, theatreId, price, showId}});
     }
 
     return (

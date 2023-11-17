@@ -6,6 +6,8 @@ type MovieShows = {
     id: string, // show id
     timing: string,
     format: string,
+    theatreId: string, 
+    movieId: string,
     price: number,
     noOfSeats: number,
     seatConfiguration: string
@@ -37,7 +39,7 @@ function TheatreShowCard({ name, shows } : {name: string, shows: [MovieShows]}) 
 
                 <div className="ml-4 w-auto flex items-center justify-start flex-wrap">
                     {shows.map((show : MovieShows) => {
-                        return <ShowTimingCard config={show.seatConfiguration} format={show.format} price={show.price.toString()} timing={formatTime((new Date(show.timing).toLocaleTimeString()))} key={show.id} />;
+                        return <ShowTimingCard showId={show.id} movieId={show.movieId} theatreId={show.theatreId} config={show.seatConfiguration} format={show.format} price={show.price.toString()} timing={formatTime((new Date(show.timing).toLocaleTimeString()))} key={show.id} />;
                     })}
                     
                 </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+import axiosInstance from "../Config/AxiosInstance";
 import HomeLayout from "../Layouts/HomeLayout";
 import processSeatConfig from "../Utils/ProcessSeatConfig";
 
@@ -16,17 +17,49 @@ type Row = {
 
 type SeatState = Row[];
 
+type SelectedSeat = {
+    rowNumber: string,
+    seatNumber: number,
+}
+
 function SeatConfig() {
 
     const {state} = useLocation();
 
     const [seats, setSeats] = useState<SeatState>([{number: "", seats: [{number: 0, status: 0}]}]);
 
+    function onBooking() {
+        const selectedSeats : SelectedSeat[] = [];
+        seats.forEach((row: Row) => {
+            row.seats.forEach((currentSeat: Seat) => {
+                if(currentSeat.status == 3) {
+                    const newSelectedSeat : SelectedSeat = {rowNumber: row.number, seatNumber: currentSeat.number};
+                    selectedSeats.push(newSelectedSeat);
+                }
+            });
+        });
+        const seatsJson = JSON.stringify(selectedSeats).replaceAll('"', "'");
+
+        axiosInstance.post('/mba/api/v1/bookings', {
+            seat: seatsJson,
+            movieId: state.movieId,
+            theatreId: state.theatreId,
+            noOfSeats: selectedSeats.length,
+            timing: state.timing,
+            price: state.price,
+            showId: state.showId
+        }, {
+            headers: {
+                'x-access-token': import.meta.env.VITE_ACCESS_TOKEN
+            }
+        });
+    }
+
     function processSeatColor(seat: Seat) {
-        if(seat.status == 0) return '';
-        else if(seat.status == 1) return 'border border-green-300 hover:bg-green-300';
-        else if(seat.status == 3) return 'border border-yellow-300 bg-yellow-300';
-        else return 'border border-gray-400 bg-gray-300';
+        if(seat.status == 0) return ''; // blocked 
+        else if(seat.status == 1) return 'border border-green-300 hover:bg-green-300'; // available
+        else if(seat.status == 3) return 'border border-yellow-300 bg-yellow-300'; // selected seats
+        else return 'border border-gray-400 bg-gray-300'; // booked
     }
 
     function processSeatSelection(seatId: string) {
@@ -55,8 +88,6 @@ function SeatConfig() {
     }, []);
     return (
         <HomeLayout>
-         config
-         {seats.length}
          <div className="flex flex-col items-center justify-center p-16">
             {
                 seats.map((row: Row) => {
@@ -88,7 +119,16 @@ function SeatConfig() {
                     );
                 })
             }
+
+            <div>
+
+                <button onClick={onBooking} className="bg-red-500 px-4 py-2 text-white font-semibold hover:bg-red-400">Create Booking</button>
+
+            </div>
+
          </div>
+
+         
         </HomeLayout>
     );
 }
